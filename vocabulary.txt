@@ -1,0 +1,3 @@
+Vocabulary
+Scope-->ambito
+render-->renderizar

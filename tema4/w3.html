@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body >
+	<h1 style="color:blue;">Validacion de textfields</h1>
+	<form enctype="multipart/form-data"  method = "post" style="border-style:dashed; padding: 10px;">
+		Dni: <input type="text" id="dni" onblur="validarDni(this)"><p id="par1"></p><br><br>
+		Nombre: <input type="text" id="nombre" onblur="validarNombre(this)"><p id="par2"></p><br><br>
+		Apellidos: <input type="text" id="apellidos" onblur="validarApellidos(this)"><p id="par3"></p><br><br>
+        Telefono: <input type="text" id="telefono" onblur="validarTelefono(this)"><p id="par4"></p><br><br>
+        email: <input type="text" id="email" onblur="validarGmail(this)"><br><p id="par5"></p><br>
+        usuario: <input type="text" id="usuario" onblur="validarUsuario(this)"><p id="par6"></p><br><br>
+		<!--<input type = "submit" name="enviar" value="Insertar alumno" />-->
+    </form>	
+    <script src="w3.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+var b=screen.availHeight;
+var c=screen.availWidth;
+var d=screen.height;
+//var e=screen.orientation;
+var f=screen.pixelDepth;
+var g=screen.width;
+document.write("<br>AvailWidht: "+c); 
+document.write("<br>AvailHeight: "+b);
+document.write("<br>height: "+d);
+//document.write("<br>Orientation: "+e);
+document.write("<br>pixelDepth: "+f);
+document.write("<br>width: "+g);

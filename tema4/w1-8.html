@@ -1,0 +1,32 @@
+<html>
+<head>
+    
+</head>
+<body onmousemove="ratonSeMueve(event)">
+    <img name="imagen1" src="movil.PNG" width="200" height="200" onclick="clickEnImagen(event)" style="position:absolute">
+    <img name="imagen2" src="imagen1.jpg" width="200" height="200" onclick="clickEnImagen(event)" style="position:absolute">
+    
+    <script>
+        var imagen;
+        var imagenPulsada=false;
+        var offsetX,offsetY,x,y;
+        
+        
+        function clickEnImagen(event){//selecciona la imagen pulsada 
+            imagenPulsada=!imagenPulsada;
+            imagen=event.target;
+            offsetX=event.clientX-imagen.offsetLeft;
+            offsetY=event.clientY-imagen.offsetTop;
+        }
+        
+        function ratonSeMueve(event){//mueve la imagen segun la posicion del raton
+            x=event.clientX;
+            y=event.clientY;
+            console.log(x+" ,"+y);
+            if(imagenPulsada){
+                imagen.hspace=x-offsetX;
+                imagen.vspace=y-offsetY;
+            }
+        }</script>
+</body>
+</html>
