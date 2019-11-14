@@ -1,10 +1,8 @@
-export class Juego{
+class Juego{
     
     fin=false;
     pos=0;
     pos1=0;
-    j1=false;
-    j2=false
 
 
     constructor(){
@@ -13,14 +11,12 @@ export class Juego{
 
 
     tirar(){//tirada
-        if(this.j1==false){
         if(this.fin==false){
         var tirada=parseInt(Math.random()*6+1);
-        this.j1=true;
         if(this.pos+tirada==29){
             this.pos=this.juego(this.pos+tirada);
             this.fin=true;
-            console.log("Fin del juego,ha ganado el jugador 1!");
+            console.log("Fin del juego,has ganado!");
         }else if(this.pos+tirada<29){
             this.pos=this.juego(this.pos+tirada);
         }else if(this.pos+tirada>29){
@@ -29,21 +25,15 @@ export class Juego{
         }else{
             console.log("El juego ya ha terminado");
         }
-        return this.pos;
-    }else{
-        console.log("Le toca al jugador 2");
-    }
     }
 
     tirar1(){//tirada
-        if(this.j2==false){
         if(this.fin==false){
         var tirada=parseInt(Math.random()*6+1);
-        this.j2=true;
         if(this.pos1+tirada==29){
             this.pos1=this.juego(this.pos1+tirada);
             this.fin=true;
-            console.log("Fin del juego, ha ganado el jugador 2");
+            console.log("Fin del juego, ha ganado la maquina");
         }else if(this.pos1+tirada<29){
             this.pos1=this.juego(this.pos1+tirada);
         }else if(this.pos+tirada>29){
@@ -52,10 +42,6 @@ export class Juego{
         }else{
             console.log("El juego ya ha terminado");
         }
-        return this.pos1;
-    }else{
-        console.log("Le toca al jugador 1");
-    }
     }
 
 
@@ -88,6 +74,7 @@ export class Juego{
         console.log("La Posicion de la maquina es: "+this.pos1);
     }
 }
+var juego=new Juego();
 
 
 

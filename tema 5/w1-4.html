@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>w1-4</title>
+</head>
+<body>
+    <ul id="lista">
+        <li>klok loco</li>
+    </ul>
+    <input type="submit" value="añadir" onclick="document.getElementById('lista').appendChild(document.createElement('li'))" >
+    <input type="file" id="archivo" >
+    <input type="submit" value="añadir otro fichero" onclick="createInputFile()">
+    <script >
+        function createInputFile(){
+            var x=document.createElement('input');
+            x.setAttribute("type","file");
+            document.body.appendChild(x);
+        }
+    </script>
+</body>
+</html>
