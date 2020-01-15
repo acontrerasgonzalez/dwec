@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Partido');
+        data.addColumn('number', 'escaños');
+        var arr1=[120,88,52,35,10];
+        
+        data.addRows([
+          ['PP', arr1[0]],
+          ['PSOE', arr1[1]],
+          ['VOX', arr1[2]],
+          ['Podemos', arr1[3]],
+          ['Ciudadanos', arr1[4]]
+        ]);
+        var arr=[200,300,400,500,600,700];
+        var data1 = google.visualization.arrayToDataTable([
+          ['Country', 'visitors per day'],
+          ['Germany', arr[0]],
+          ['United States', arr[1]],
+          ['Brazil', arr[2]],
+          ['Canada', arr[3]],
+          ['France', arr[4]],
+          ['RU', arr[5]]
+        ]);
+        var options1 = {'title':'Paises mas visitados',
+                       'width':400,
+                       'height':300};
+
+        var chart2 = new google.visualization.GeoChart(document.getElementById('chart2_div'));
+
+        chart2.draw(data1, options1);
+        // Set chart options
+        var options = {'title':'Partidos en España',
+                       'width':400,
+                       'height':300,
+                       animation:{
+                        duration: 1000,
+                        easing: 'out',
+        },
+                    };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+        var chart1 = new google.visualization.BarChart(document.getElementById('chart1_div'));
+        chart1.draw(data, options);
+        setInterval(()=>{
+           /* var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Partido');
+            data.addColumn('number', 'escaños');
+        
+            data.addRows([
+                ['PP', arr1[0]],
+                ['PSOE', arr1[1]],
+                ['VOX', arr1[2]],
+                ['Podemos', arr1[3]],
+                ['Ciudadanos', arr1[4]]
+            ]);*/
+            data.setValue(0, 1, 300);
+            /*data.setValue(1, 1, arr1[1]);
+            data.setValue(2, 1, arr1[2]);
+            data.setValue(3, 1, arr1[3]);
+            data.setValue(4, 1, arr1[4]);*/
+            chart1.draw(data, options);
+        },1000);
+      }
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+    <div id="chart1_div"></div>
+    <div id="chart2_div"></div>
+  </body>
+</html>

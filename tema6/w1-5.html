@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Worksheet1.5</h2>
+    <div id="demo" style="background-color: seagreen; display: flex;justify-content: center;">
+        <table id="tabla" style="border:solid sienna 1px; ">
+            <tr>
+                <td>autor</td>
+                <td>titulo</td>
+                <td>destinatario</td>
+                <td>descripcion</td>
+            </tr>
+        </table>
+    </div>
+<script>
+    function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        var xmlDoc = this.responseText;
+        console.log(this.responseText);
+        for(var i=0;i<xmlDoc.getElementsByTagName('Correo').length;i++){
+            autor = xmlDoc.getElementsByTagName('Correo')[i].childNodes[0].nodeValue;
+            titulo = xmlDoc.getElementsByTagName('Correo')[i].childNodes[1].nodeValue;
+            destinatario = xmlDoc.getElementsByTagName('Correo')[i].childNodes[2].nodeValue;
+            descripcion = xmlDoc.getElementsByTagName('Correo')[i].childNodes[3].nodeValue;
+            arra=[autor,titulo,destinatario,descripcion];
+            creaHilera(arra);
+        }
+    }
+  };
+  xhttp.open("GET", "w1-5.xml", true);
+  xhttp.send();
+}
+
+
+function creaHilera(arr){
+    
+    var hilera = document.createElement("tr");
+ 
+    for (var j = 0; j < 4; j++) {
+      // Crea un elemento <td> y un nodo de texto, haz que el nodo de
+      // texto sea el contenido de <td>, ubica el elemento <td> al final
+      // de la hilera de la tabla
+      var celda = document.createElement("td");
+      var textoCelda = document.createTextNode(arr[j]);
+      celda.appendChild(textoCelda);
+      hilera.appendChild(celda);
+    }
+    document.getElementById("tabla").appendChild(hilera);
+  }
+  window.onload=loadDoc;
+</script>
+</body>
+</html

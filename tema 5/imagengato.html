@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+	<html>
+<head>
+	<title>gato</title>
+</head>
+<body>
+    <script>
+        class gato{
+            constructor(nombre,imag,id){
+                this.id=id;
+                this.nombre=nombre;
+                this.img=document.createElement("img");
+                this.img.setAttribute("src",imag);
+                this.img.setAttribute("id",id);
+                this.cont=0;
+            }
+        }
+        var gatos=[];
+        for(i=0;i<5;i++){
+            gatos[i]=new gato("gato"+i,"gato.jpg","gato"+i);
+            var enl=document.createElement("p");
+            var textNode = document.createTextNode(gatos[i].nombre);
+            enl.appendChild(textNode);
+            enl.onclick=clicka;
+            document.body.appendChild(enl);
+        }
+    function clicka(event){
+        
+    }
+        </script>
+</body>
+</html>

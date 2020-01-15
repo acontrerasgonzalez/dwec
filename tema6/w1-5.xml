@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+   <Correo id="bk101">
+      <autor>Computer</autor>
+      <titulo>44.95</titulo>
+      <destinatario>adri</destinatario>
+      <Description>An in-depth look at creating applications
+      with XML.</Description>
+   </Correo>
+   <Correo id="bk102">
+      <autor>Computer</autor>
+      <titulo>4dfaasd4.95</titulo>
+      <destinatario>jose</destinatario>
+      <Description>An in-depth look at creating applications
+      with XML.</Description>
+   </Correo>
+   <Correo id="bk103">
+      <autor>Computer</autor>
+      <titulo>4dfaasd4.95</titulo>
+      <destinatario>jose</destinatario>
+      <Description>An in-depth look at creating applications
+      with XML.</Description>
+   </Correo>
