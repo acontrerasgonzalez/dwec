@@ -5,8 +5,8 @@ $("#boton-busc").on("click", busqueda);
 $(window).scroll(function() {
   if ($(window).scrollTop() + $(window).height() > $(document).height() - 100){
     if(blockScroll==false){
-            getFilms();
             pagina++;
+            getFilms();
     }
 }
 });
@@ -16,7 +16,6 @@ function busqueda(){
   getFilms();
 }
 function getFilms() {
-  //alert($("#busc").val());
   if(blockScroll==false){
     blockScroll=true;
     $.ajax({
@@ -47,8 +46,6 @@ function getFilms() {
         listaFilms.append(conte);   
       });
       blockScroll=false; 
-      /*$("#busc").hide();
-      $("#boton-busc").hide();*/
       $("img").click(getFilm);
     },
     error: function() {
@@ -65,15 +62,25 @@ function getFilm(event) {
       $("#popupBody>img").remove();
       $("#popupBody>p").remove();
         var listaFilm = $("#popupBody");
-      //$.each(respuesta, function(index, elemento) {
-        //$("#posts").hide();
         var imag=document.createElement("img");
         imag.setAttribute('src', respuesta.Poster);
         imag.setAttribute('width', '200px');
         imag.setAttribute('height', '200px');
         var par=document.createElement("p");
-        var node=document.createTextNode("Titulo: "+respuesta.Title+" Año: "+respuesta.Year+" Director:"+respuesta.Director);
+        var node=document.createTextNode("Titulo: "+respuesta.Title+" Año: "+respuesta.Year);
         par.append(node);
+        var br=document.createElement("br");
+        par.append(br);
+        var node1=document.createTextNode(" Runtime: "+respuesta.Runtime+" Writer: "+respuesta.Writer);
+        par.append(node1);
+        var br=document.createElement("br");
+        par.append(br);
+        var node1=document.createTextNode(" Actors: "+respuesta.Actors+" Released: "+respuesta.Released);
+        par.append(node1);
+        var br=document.createElement("br");
+        par.append(br);
+        var node2=document.createTextNode(" Plot: "+respuesta.Plot);
+        par.append(node2);
         listaFilm.append(imag);
         listaFilm.append(par);
         $("#detalle")[0].click();
