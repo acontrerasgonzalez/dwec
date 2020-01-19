@@ -1,0 +1,5 @@
+Proyecto Dwec Cargar Peliculas
+El  archivo .js contiene el metodo getFilms():que crea divs con las peliculas segun el buscador,
+getFilm(e):activa un popup con la informacion de la pelicula seleccionada cuando se pulsa sobre la imagen.
+El archivo .html contiene las etiquetas necesarias.
+El archivo .css contiene estilos para el popup.
