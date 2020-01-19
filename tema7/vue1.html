@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+        <button v-on:click="add">add</button>
+        <input v-model="ad">
+        <ol>
+            <li v-for="todo,len in todos">
+                <input type="checkbox" v-model='todo.activar'>
+                    <span v-bind:class="{active: todo.activar}"> {{ todo.mensaje }} </span>
+                    <button v-on:click="del(len)">borrar</button>
+                </input>
+            </li>
+        </ol>
+        <button v-on:click="borr">Borrar completados</button>
+    </div>
+    <style>
+        .active{
+            text-decoration: line-through;
+        }
+    </style>
+    <script >
+        var app=new Vue({
+            el:'#app',
+            data:{                
+                todos:[],
+                ad:"",
+            },
+            methods:{
+                add:function(){
+                    this.todos.push({mensaje:this.ad,activar:false}),
+                    this.ad=""
+                },
+                del:function(pos){
+                    this.todos.splice(pos,1);
+                },
+                borr:function(){
+                    var len=this.todos.length;
+                    for (i=len-1;i>=0;i--){
+                        if(this.todos[i].activar){
+                            this.todos.splice(i,1)
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

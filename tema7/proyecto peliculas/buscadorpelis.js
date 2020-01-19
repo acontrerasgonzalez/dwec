@@ -1,7 +1,7 @@
 
 var pagina=1;
 var blockScroll=false;
-$("#boton-busc").on("click", getFilms);
+$("#boton-busc").on("click", busqueda);
 $(window).scroll(function() {
   if ($(window).scrollTop() + $(window).height() > $(document).height() - 100){
     if(blockScroll==false){
@@ -10,7 +10,11 @@ $(window).scroll(function() {
     }
 }
 });
-
+function busqueda(){
+  pagina=1;
+  $("#posts").empty();
+  getFilms();
+}
 function getFilms() {
   //alert($("#busc").val());
   if(blockScroll==false){
@@ -20,27 +24,32 @@ function getFilms() {
     success: function(respuesta) {
 
       var listaFilms = $("#posts");
+      //$("#posts").empty();
       $.each(respuesta.Search, function(index, elemento) {
         var imag=document.createElement("img");
         imag.setAttribute('src', elemento.Poster);
-        imag.setAttribute('width', '100px');
-        imag.setAttribute('height', '100px');
+        imag.setAttribute('width', '250px');
+        imag.setAttribute('height', '350px');
         imag.id=elemento.imdbID;
         var conte=document.createElement("div");
         var par=document.createElement("p");
         var node=document.createTextNode("Titulo: "+elemento.Title);
+        var enl=document.createElement("a");
+        enl.href="#popup";
+        conte.setAttribute('class',"card col-md-3 m-3");
+        enl.id="detalle";
+        enl.style.display="none";
+        enl.text="Detalle";
         par.append(node);
+        par.append(enl);
         conte.append(imag);
         conte.append(par); 
         listaFilms.append(conte);   
       });
       blockScroll=false; 
-      $("#busc").hide();
-      $("#boton-busc").hide();
+      /*$("#busc").hide();
+      $("#boton-busc").hide();*/
       $("img").click(getFilm);
-      /*$("#posts>div").height(150);
-      $("#posts>div").width(500);
-      $("#posts>div").css("background-color","red");*/
     },
     error: function() {
       console.log("No se ha podido obtener la información");
@@ -53,19 +62,21 @@ function getFilm(event) {
   $.ajax({
     url: "http://www.omdbapi.com/?i="+event.target.id+"&apikey=f20af2c3",
     success: function(respuesta) {
-        
-        var listaFilm = $("#post");
+      $("#popupBody>img").remove();
+      $("#popupBody>p").remove();
+        var listaFilm = $("#popupBody");
       //$.each(respuesta, function(index, elemento) {
-        $("#posts").hide();
+        //$("#posts").hide();
         var imag=document.createElement("img");
         imag.setAttribute('src', respuesta.Poster);
-        imag.setAttribute('width', '500px');
-        imag.setAttribute('height', '500px');
+        imag.setAttribute('width', '200px');
+        imag.setAttribute('height', '200px');
         var par=document.createElement("p");
-        var node=document.createTextNode("Titulo"+respuesta.Title+" Año: "+respuesta.Year);
+        var node=document.createTextNode("Titulo: "+respuesta.Title+" Año: "+respuesta.Year+" Director:"+respuesta.Director);
         par.append(node);
         listaFilm.append(imag);
         listaFilm.append(par);
+        $("#detalle")[0].click();
     },
     error: function() {
       console.log("No se ha podido obtener la información");

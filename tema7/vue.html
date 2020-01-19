@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+        <button v-on:click="add">add</button>
+        <button v-on:click="del">del</button>
+        <input v-model="ad">
+        <ol>
+            <li v-for="todo in todos">
+              {{ todo.mensaje }}
+            </li>
+          </ol>
+    </div>
+    <script >
+        var app=new Vue({
+            el:'#app',
+            data:{                
+                todos:[{mensaje:"ee"},{mensaje:"hola"},{mensaje:"hhey"}],
+                ad:"",
+            },
+            methods:{
+                add:function(){
+                    this.todos.push({mensaje:this.ad})
+                },
+                del:function(){
+                    this.todos.pop()
+                }
+            }
+        });
+    </script>
+</body>
+</html>
